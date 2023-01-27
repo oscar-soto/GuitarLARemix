@@ -73,7 +73,7 @@ main {
   transition: background-color .3s;
 }
 .header .navigation a:hover,
-.active {
+.header .active {
   background-color: var(--primary);
 }
 @media (min-width: 768px) {
@@ -83,5 +83,38 @@ main {
   }
   .header .navigation {
     margin-top: 0;
+  }
+}
+
+/**** Footer ****/
+.footer {
+  margin-top: 5rem;
+  padding: 5rem 0;
+  background-color: var(--black);
+}
+.footer .navigation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.footer .navigation a,
+.footer .copyright {
+  color: var(--white);
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.footer .copyright {
+  text-align: center;
+  font-size: 2.2rem;
+}
+@media (min-width: 768px) {
+  .footer .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer .navigation {
+    flex-direction: row;
   }
 }
