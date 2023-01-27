@@ -1,7 +1,53 @@
+import imagen from '../../public/img/nosotros.jpg';
+import styles from '~/styles/us.css';
+
+export const meta = () => {
+  return {
+    title: 'GuitarraLA - Sobre Nosotros',
+    description: 'Ventas de gutarras, blog de musica y mas',
+  };
+};
+export const links = () => {
+  return [
+    {
+      rel: 'stylesheet',
+      href: styles,
+    },
+    {
+      rel: 'preload',
+      href: imagen,
+      as: 'image',
+    },
+  ];
+};
 const Nosotros = () => {
   return (
-    <div>nosotros</div>
-  )
-}
+    <main className="container us-section">
+      <h2 className="heading">Nosotros</h2>
 
-export default Nosotros
+      <div className="content">
+        <figure>
+          <img src={imagen} alt="Imagen sobre nosotros" />
+        </figure>
+
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+            alias soluta doloribus harum ducimus dolore debitis ratione quasi
+            assumenda odit eveniet atque perspiciatis facere eum temporibus
+            deleniti libero, neque maxime?
+          </p>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+            alias soluta doloribus harum ducimus dolore debitis ratione quasi
+            assumenda odit eveniet atque perspiciatis facere eum temporibus
+            deleniti libero, neque maxime?
+          </p>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default Nosotros;
