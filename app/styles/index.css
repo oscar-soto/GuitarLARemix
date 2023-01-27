@@ -72,7 +72,8 @@ main {
   text-transform: uppercase;
   transition: background-color .3s;
 }
-.header .navigation a:hover {
+.header .navigation a:hover,
+.active {
   background-color: var(--primary);
 }
 @media (min-width: 768px) {
