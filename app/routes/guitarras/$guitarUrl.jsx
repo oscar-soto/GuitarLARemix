@@ -4,7 +4,15 @@ import { getGuitar } from '~/models/guitars.server';
 import styles from '~/styles/guitars.css';
 
 export const meta = ({ data }) => {
-  const name = data.data[0].attributes.name;
+  const name = data?.data[0].attributes.name;
+
+  if (!data) {
+    return {
+      title: 'GuitarraLA - Guitarra no encontrada',
+      description: `Guitarras, venta de guitarras, guitarra no encontrada`,
+    };
+  }
+
   return {
     title: `GuitarraLA - ${name}`,
     description: `Guitarras, venta de guitarras, guitarra ${name}`,
@@ -23,6 +31,13 @@ export const links = () => {
 export const loader = async ({ params }) => {
   const { guitarUrl } = params;
   const guitar = await getGuitar(guitarUrl);
+
+  if (guitar.data.length === 0) {
+    throw new Response('', {
+      status: 404,
+      statusText: 'Guitarra no encontrada',
+    });
+  }
 
   return guitar;
 };
