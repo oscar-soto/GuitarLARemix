@@ -1,5 +1,5 @@
 import { useLoaderData } from '@remix-run/react';
-import { getGuitar } from '~/models/guitars.server';
+import { getGuitars } from '~/models/guitars.server';
 
 import styles from '~/styles/guitars.css';
 import Guitar from '~/components/guitar';
@@ -21,7 +21,7 @@ export const links = () => {
 };
 
 export const loader = async () => {
-  const guitars = await getGuitar();
+  const guitars = await getGuitars();
   return guitars.data;
 };
 
