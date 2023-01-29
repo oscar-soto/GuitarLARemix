@@ -65,6 +65,7 @@ const Document = ({ children }) => {
 // Errors handling
 export const CatchBoundary = () => {
   const error = useCatch();
+  
   return (
     <Document>
       <p className="error">

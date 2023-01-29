@@ -4,7 +4,7 @@ import styles from '~/styles/us.css';
 export const meta = () => {
   return {
     title: 'GuitarraLA - Sobre Nosotros',
-    description: 'Ventas de gutarras, blog de musica y mas',
+    description: 'GuitarraLA, Ventas de guitarras, blog de música y mas',
   };
 };
 export const links = () => {

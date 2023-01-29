@@ -4,7 +4,8 @@
   gap: 4rem;
 }
 .post {
-
+  max-width: 80rem;
+  margin: 0 auto;
 }
 .post figure {
   margin: 0;
@@ -26,6 +27,12 @@
 .post .date {
   font-size: 1.6rem;
   color: var(--primary);
+}
+.post .text {
+  white-space: pre-wrap;
+}
+.mt-3 {
+  margin-top: 3rem;
 }
 
 /* Responsive */
