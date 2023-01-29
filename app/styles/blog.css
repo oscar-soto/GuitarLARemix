@@ -23,6 +23,10 @@
   -webkit-line-clamp: 4;
   overflow: hidden;
 }
+.post .date {
+  font-size: 1.6rem;
+  color: var(--primary);
+}
 
 /* Responsive */
 @media (min-width: 768px) {
