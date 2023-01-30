@@ -1,8 +1,9 @@
 import { useLoaderData } from '@remix-run/react';
 import { getGuitars } from '~/models/guitars.server';
 
+import GuitarsList from '~/components/guitarsList';
+
 import styles from '~/styles/guitars.css';
-import Guitar from '~/components/guitar';
 
 export const meta = () => {
   return {
@@ -30,15 +31,7 @@ export const Tienda = () => {
 
   return (
     <main className="container">
-      <h2 className="heading">Nuestra Colección</h2>
-
-      {guitars?.length && (
-        <div className="guitars-grid">
-          {guitars.map((guitar) => (
-            <Guitar guitar={guitar?.attributes} key={guitar?.id} />
-          ))}
-        </div>
-      )}
+      <GuitarsList guitars={guitars} />
     </main>
   );
 };
