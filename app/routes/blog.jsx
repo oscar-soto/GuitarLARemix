@@ -1,15 +1,7 @@
-import { useLoaderData } from '@remix-run/react';
-import PostsList from '~/components/postsList';
-import { getPosts } from '~/models/posts.server';
+import { Outlet } from '@remix-run/react';
 
 import styles from '~/styles/blog.css';
 
-export const meta = () => {
-  return {
-    title: 'GuitarraLA - Nuestro blog',
-    description: 'GuitarraLA, Blog de música y Ventas de guitarras',
-  };
-};
 export const links = () => {
   return [
     {
@@ -19,18 +11,13 @@ export const links = () => {
   ];
 };
 
-export const loader = async () => {
-  const posts = await getPosts();
-  return posts?.data;
-};
 
 const Blog = () => {
-  const posts = useLoaderData();
 
   return (
-    <div className="container">
-      <PostsList posts={posts} />
-    </div>
+    <main className="container">
+      <Outlet />
+    </main>
   );
 };
 
