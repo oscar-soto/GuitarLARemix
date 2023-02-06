@@ -1,4 +1,5 @@
 import { useLoaderData } from '@remix-run/react';
+import { useState } from 'react';
 import { getGuitar } from '~/models/guitars.server';
 
 export const meta = ({ data }) => {
@@ -32,8 +33,28 @@ export const loader = async ({ params }) => {
 };
 
 const Guitar = () => {
+  const [amount, setAmount] = useState(0);
   const guitar = useLoaderData();
   const { description, price, name, guitar_imagen } = guitar.data[0].attributes;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(amount < 1) {
+      alert('Debes seleccionar una cantidad')
+      return;
+    }
+
+    const guitarSelected = {
+      id: guitar.data[0].id,
+      image: guitar_imagen.data.attributes.url,
+      name,
+      price,
+      amount
+    }
+
+    console.log(guitarSelected)
+  }
 
   return (
     <div className="guitar">
@@ -49,11 +70,15 @@ const Guitar = () => {
         <p className="text">{description}</p>
         <p className="price">{price}</p>
 
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="amount">Cantidad</label>
 
-          <select name="" id="amount">
-            <option value="">-- Seleccione --</option>
+          <select
+            name=""
+            id="amount"
+            onChange={(e) => setAmount(parseInt(e.target.value))}
+          >
+            <option value="0">-- Seleccione --</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
