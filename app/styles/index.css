@@ -60,6 +60,7 @@ main {
 }
 .header .navigation {
   display: flex;
+  align-items: center;
   gap: 2rem;
   margin-top: 5rem;
 }
@@ -71,6 +72,9 @@ main {
   text-decoration: none;
   text-transform: uppercase;
   transition: background-color 0.3s;
+}
+.header .navigation img {
+  width: 3rem;
 }
 .header .navigation a:hover,
 .header .active {
@@ -98,6 +102,10 @@ main {
   flex-direction: column;
   gap: 2rem;
 }
+.footer .navigation a:last-of-type {
+  display: none;
+}
+
 .footer .navigation a,
 .footer .copyright {
   color: var(--white);
