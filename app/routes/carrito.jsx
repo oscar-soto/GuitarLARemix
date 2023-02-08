@@ -19,7 +19,7 @@ export const links = () => {
 };
 
 const Cart = () => {
-  const { cart } = useOutletContext();
+  const { cart, updateAmount } = useOutletContext();
 
   return (
     <main className="container">
@@ -41,10 +41,32 @@ const Cart = () => {
 
                 <div>
                   <p className="name">{product.name}</p>
-                  <p>Cantidad {product.amount}</p>
-                  
-                  <p className="price">$ <span>{product.price}</span></p>
-                  <p className="subtotal">Subtotal$ <span>{product.amount * product.price}</span></p>
+                  <p>Cantidad</p>
+
+                  <select
+                    value={product.amount}
+                    className="select"
+                    onChange={(e) =>
+                      updateAmount({
+                        amount: +e.target.value,
+                        id: product.id,
+                      })
+                    }
+                  >
+                    <option value="0">-- Seleccione --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+
+                  <p className="price">
+                    $ <span>{product.price}</span>
+                  </p>
+                  <p className="subtotal">
+                    Subtotal$ <span>{product.amount * product.price}</span>
+                  </p>
                 </div>
               </div>
             ))}
