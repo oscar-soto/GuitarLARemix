@@ -120,6 +120,7 @@ const App = () => {
       <Outlet
         context={{
           addCart,
+          cart
         }}
       />
     </Document>
