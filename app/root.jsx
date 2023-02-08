@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Link,
   Links,
@@ -65,13 +66,15 @@ const Document = ({ children }) => {
 // Errors handling
 export const CatchBoundary = () => {
   const error = useCatch();
-  
+
   return (
     <Document>
       <p className="error">
         {error.status} {error.statusText}
       </p>
-      <Link className='error-link' to="/">Tal vez quieras volver a la página principal</Link>
+      <Link className="error-link" to="/">
+        Tal vez quieras volver a la página principal
+      </Link>
     </Document>
   );
 };
@@ -82,15 +85,43 @@ export const ErrorBoundary = ({ error }) => {
       <p className="error">
         {error.status} {error.statusText}
       </p>
-      <Link className='error-link' to="/">Tal vez quieras volver a la página principal</Link>
+      <Link className="error-link" to="/">
+        Tal vez quieras volver a la página principal
+      </Link>
     </Document>
   );
 };
 
 const App = () => {
+  const [cart, setCart] = useState([]);
+
+  const addCart = (guitar) => {
+    const existsCart = cart.some((guitarState) => guitarState.id === guitar.id);
+
+    if (existsCart) {
+      // loop and find the duplicate element
+      const updatedCart = cart.map((guitarState) => {
+        if (guitarState.id === guitar.id) {
+          // Updated Amount
+          guitarState.amount = guitar.amount;
+        }
+
+        return guitarState;
+      });
+
+      return setCart(updatedCart);
+    }
+
+    setCart([...cart, guitar]);
+  };
+
   return (
     <Document>
-      <Outlet />
+      <Outlet
+        context={{
+          addCart,
+        }}
+      />
     </Document>
   );
 };
