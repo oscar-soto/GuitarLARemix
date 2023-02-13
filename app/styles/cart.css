@@ -7,6 +7,7 @@
   padding: 3rem;
 }
 .product {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 4rem;
@@ -50,6 +51,15 @@
   padding: 3rem;
   border-radius: 1rem;
   background-color: #F9FAFB;
+}
+.btn_delete {
+  all: unset;
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+}
+.btn_delete:hover {
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

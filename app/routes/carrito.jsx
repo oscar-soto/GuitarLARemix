@@ -21,7 +21,7 @@ export const links = () => {
 
 const Cart = () => {
   const [total, setTotal] = useState(0);
-  const { cart, updateAmount } = useOutletContext();
+  const { cart, updateAmount, deleteGuitar } = useOutletContext();
 
   useEffect(() => {
     const sumTotal = cart.reduce(
@@ -29,7 +29,7 @@ const Cart = () => {
       0
     );
 
-    setTotal(sumTotal)
+    setTotal(sumTotal);
   }, [cart]);
 
   return (
@@ -79,6 +79,14 @@ const Cart = () => {
                     Subtotal$ <span>{product.amount * product.price}</span>
                   </p>
                 </div>
+
+                <button
+                  type="button"
+                  className="btn_delete"
+                  onClick={() => deleteGuitar(product.id)}
+                >
+                  x
+                </button>
               </div>
             ))}
         </div>
