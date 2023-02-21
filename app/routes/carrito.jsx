@@ -40,8 +40,8 @@ const Cart = () => {
         <div className="cart">
           <h2>Articulos</h2>
 
-          {cart.length > 0 &&
-            cart.map((product) => (
+          {cart?.length > 0 &&
+            cart?.map((product) => (
               <div key={product.id} className="product">
                 <div>
                   <img

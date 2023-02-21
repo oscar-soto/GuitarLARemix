@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Link,
   Links,
@@ -93,7 +93,12 @@ export const ErrorBoundary = ({ error }) => {
 };
 
 const App = () => {
-  const [cart, setCart] = useState([]);
+  const cartLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('cart')) ?? [] : null;
+  const [cart, setCart] = useState(cartLS);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addCart = (guitar) => {
     const existsCart = cart.some((guitarState) => guitarState.id === guitar.id);
@@ -116,21 +121,21 @@ const App = () => {
   };
 
   const updateAmount = (guitar) => {
-    const updateCart = cart.map(guitarState => {
-      if(guitarState.id === guitar.id) {
-        guitarState.amount = guitar.amount
+    const updateCart = cart.map((guitarState) => {
+      if (guitarState.id === guitar.id) {
+        guitarState.amount = guitar.amount;
       }
 
-      return guitarState
-    })
+      return guitarState;
+    });
 
-    setCart(updateCart)
-  }
+    setCart(updateCart);
+  };
 
   const deleteGuitar = (id) => {
-    const updateCart = cart.filter(guitarState => guitarState.id !== id)
+    const updateCart = cart.filter((guitarState) => guitarState.id !== id);
     setCart(updateCart);
-  }
+  };
 
   return (
     <Document>
